@@ -18,7 +18,7 @@ source:
       - macro_path_binary_relocation.patch
 
 build:
-  number: 4
+  number: 5
 
 outputs:
   - name: {{ cxx_name }}
