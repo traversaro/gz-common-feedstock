@@ -12,7 +12,7 @@ package:
 
 source:
   - url: https://github.com/gazebosim/{{ repo_name }}/archive/{{ repo_name }}{{ major_version }}_{{ version }}.tar.gz
-    sha256: 046552ca440fd9b8bcb2900da4bd0b9eacc1a5561373bdfae10e99d41536b159
+    sha256: dbb7eb6639fec27bb971d0df6a0d17d8076e82a7a7f3cadb570adab02ab7d9ad
     patches:
       - librt_linkage.patch  # [linux]
       - macro_path_binary_relocation.patch
