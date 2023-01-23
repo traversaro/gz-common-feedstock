@@ -29,3 +29,7 @@ cmake ${CMAKE_ARGS} .. \
 
 cmake --build . --config Release ${NUM_PARALLEL}
 cmake --build . --config Release --target install ${NUM_PARALLEL}
+
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
+  ctest --output-on-failure -C Release ${CTEST_OPTIONS}
+fi
