@@ -1,6 +1,6 @@
 {% set component_name = "common" %}
 {% set repo_name = "gz-" + component_name %}
-{% set version = "5.0.0" %}
+{% set version = "5.3.1" %}
 {% set major_version = version.split('.')[0] %}
 {% set name = repo_name + major_version %}
 {% set component_version = component_name + major_version %}
@@ -18,7 +18,7 @@ source:
       - macro_path_binary_relocation.patch
 
 build:
-  number: 5
+  number: 0
 
 outputs:
   - name: {{ cxx_name }}
