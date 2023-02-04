@@ -1,17 +1,18 @@
-{% set component_name = "common" %}
-{% set repo_name = "gz-" + component_name %}
-{% set version = "5.3.1" %}
-{% set major_version = version.split('.')[0] %}
+{% set repo_name = "gz-common" %}
+{% set component_name = repo_name.split('-')[1] %}
+{% set version = "5_5.3.1" %}
+{% set version_package = version.split('_')[1] %}
+{% set major_version = version.split('_')[0] %}
 {% set name = repo_name + major_version %}
 {% set component_version = component_name + major_version %}
 {% set cxx_name = "lib" + name %}
 
 package:
   name: {{ name }}
-  version: {{ version }}
+  version: {{ version_package }}
 
 source:
-  - url: https://github.com/gazebosim/{{ repo_name }}/archive/{{ repo_name }}{{ major_version }}_{{ version }}.tar.gz
+  - url: https://github.com/gazebosim/{{ repo_name }}/archive/{{ repo_name }}{{ version }}.tar.gz
     sha256: dbb7eb6639fec27bb971d0df6a0d17d8076e82a7a7f3cadb570adab02ab7d9ad
     patches:
       - librt_linkage.patch  # [linux]
