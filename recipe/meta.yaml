@@ -57,6 +57,8 @@ outputs:
         - test -f ${PREFIX}/lib/lib{{ name }}-graphics.dylib  # [osx]
         - test -f ${PREFIX}/lib/lib{{ name }}-av.so  # [linux]
         - test -f ${PREFIX}/lib/lib{{ name }}-av.dylib  # [osx]
+        - test -f ${PREFIX}/lib/lib{{ name }}-io.so  # [linux]
+        - test -f ${PREFIX}/lib/lib{{ name }}-io.dylib  # [osx]
         - test -f ${PREFIX}/lib/cmake/{{ name }}/{{ name }}-config.cmake  # [not win]
         - if not exist %PREFIX%\\Library\\include\\gz\\{{ component_version }}\\gz\\{{ component_name }}.hh exit 1  # [win]
         - if not exist %PREFIX%\\Library\\lib\\{{ name }}.lib exit 1  # [win]
@@ -65,6 +67,8 @@ outputs:
         - if not exist %PREFIX%\\Library\\bin\\{{ name }}-graphics.dll exit 1  # [win]
         - if not exist %PREFIX%\\Library\\lib\\{{ name }}-av.lib exit 1  # [win]
         - if not exist %PREFIX%\\Library\\bin\\{{ name }}-av.dll exit 1  # [win]
+        - if not exist %PREFIX%\\Library\\lib\\{{ name }}-io.lib exit 1  # [win]
+        - if not exist %PREFIX%\\Library\\bin\\{{ name }}-io.dll exit 1  # [win]
         - if not exist %PREFIX%\\Library\\lib\\cmake\\{{ name }}\\{{ name }}-config.cmake exit 1  # [win]
 
   - name: {{ name }}
