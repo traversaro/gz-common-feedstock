@@ -97,7 +97,7 @@ about:
   home: https://github.com/gazebosim/{{ repo_name }}
   license: Apache-2.0
   license_file: LICENSE
-  summary: 'An audio-visual library supports processing audio and video files, a graphics library can load a variety 3D mesh file formats into a generic in-memory representation, and the core library of Gazebo Common contains functionality that spans Base64 encoding/decoding to thread pools.'
+  summary: An audio-visual library supports processing audio and video files, a graphics library can load a variety 3D mesh file formats into a generic in-memory representation, and the core library of Gazebo Common contains functionality that spans Base64 encoding/decoding to thread pools.
 
 extra:
   feedstock-name: {{ repo_name }}
