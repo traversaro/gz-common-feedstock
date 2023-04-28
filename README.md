@@ -1,11 +1,11 @@
-About gz-common
-===============
+About gz-common-feedstock
+=========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gz-common-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/gazebosim/gz-common
 
 Package license: Apache-2.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gz-common-feedstock/blob/main/LICENSE.txt)
 
 Summary: An audio-visual library supports processing audio and video files, a graphics library can load a variety 3D mesh file formats into a generic in-memory representation, and the core library of Gazebo Common contains functionality that spans Base64 encoding/decoding to thread pools.
 
