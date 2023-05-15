@@ -13,7 +13,7 @@ ffmpeg:
 glib:
 - '2'
 libgdal:
-- '3.6'
+- '3.7'
 target_platform:
 - win-64
 tinyxml2:
