@@ -31,5 +31,7 @@ cmake --build . --config Release ${NUM_PARALLEL}
 cmake --build . --config Release --target install ${NUM_PARALLEL}
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
-  ctest --output-on-failure -C Release ${CTEST_OPTIONS}
+  # PERFORMANCE_plugin_specialization  is a performance test, let's disable it as we can't do 
+  # any expectation of the speed of the CI machines
+  ctest --output-on-failure -C Release -E PERFORMANCE_plugin_specialization 
 fi
