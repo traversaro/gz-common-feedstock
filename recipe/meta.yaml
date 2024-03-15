@@ -1,6 +1,6 @@
 {% set repo_name = "gz-common" %}
 {% set component_name = repo_name.split('-')[1] %}
-{% set version = "5_5.5.0" %}
+{% set version = "5_5.5.1" %}
 {% set version_package = version.split('_')[1] %}
 {% set major_version = version.split('_')[0] %}
 {% set name = repo_name + major_version %}
@@ -13,7 +13,7 @@ package:
 
 source:
   - url: https://github.com/gazebosim/{{ repo_name }}/archive/{{ repo_name }}{{ version }}.tar.gz
-    sha256: cab7512206975b70a846aca18c210ef1977502892866c54cec9040c90a4a037c
+    sha256: d176a113db3324dd3598c3418285ea5afcb44286dba0b29f07ab1b0482df7748
     patches:
       - librt_linkage.patch  # [linux]
       - macro_path_binary_relocation.patch
