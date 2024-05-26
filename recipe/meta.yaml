@@ -20,7 +20,7 @@ source:
       - apple_disable_profiler_error_test.patch
 
 build:
-  number: 2
+  number: 3
 
 outputs:
   - name: {{ cxx_name }}
