@@ -112,7 +112,9 @@ about:
     This feedstock builds several conda packages from the gz-common source code, these packages are:
     * `{{ cxx_name }}`: Package that contains the gz-common C++ libraries.
     * `{{ name }}`: Meta-package that depends on `{{ cxx_name }}`.
+
     If you need to depend at build time on the C++ package, please depend on `{{ cxx_name }}` in your recipe.
+
     On `linux-ppc64le` the `{{ cxx_name }}` does not contain the geospatial component as in that platform the `gdal` dependency is not available.
     
 extra:
