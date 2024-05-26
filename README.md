@@ -9,6 +9,15 @@ Package license: Apache-2.0
 
 Summary: An audio-visual library supports processing audio and video files, a graphics library can load a variety 3D mesh file formats into a generic in-memory representation, and the core library of Gazebo Common contains functionality that spans Base64 encoding/decoding to thread pools.
 
+This feedstock builds several conda packages from the gz-common source code, these packages are:
+* `libgz-common5`: Package that contains the gz-common C++ libraries.
+* `gz-common5`: Meta-package that depends on `libgz-common5`.
+
+If you need to depend at build time on the C++ package, please depend on `libgz-common5` in your recipe.
+
+On `linux-ppc64le` the `libgz-common5` does not contain the geospatial component as in that platform the `gdal` dependency is not available.
+
+
 Current build status
 ====================
 

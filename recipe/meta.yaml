@@ -20,7 +20,7 @@ source:
       - apple_disable_profiler_error_test.patch
 
 build:
-  number: 1
+  number: 2
 
 outputs:
   - name: {{ cxx_name }}
@@ -48,7 +48,7 @@ outputs:
         - tinyxml2
         - glib
         - ffmpeg
-        - libgdal
+        - libgdal  # [not ppc64le]
         - assimp
     test:
       commands:
@@ -57,6 +57,8 @@ outputs:
         - test -f ${PREFIX}/lib/lib{{ name }}.dylib  # [osx]
         - test -f ${PREFIX}/lib/lib{{ name }}-graphics.so  # [linux]
         - test -f ${PREFIX}/lib/lib{{ name }}-graphics.dylib  # [osx]
+        - test -f ${PREFIX}/lib/lib{{ name }}-geospatial${SHLIB_EXT}  # [unix and not ppc64le]
+        - test ! -f ${PREFIX}/lib/lib{{ name }}-geospatial${SHLIB_EXT}  # [ppc64le]
         - test -f ${PREFIX}/lib/lib{{ name }}-av.so  # [linux]
         - test -f ${PREFIX}/lib/lib{{ name }}-av.dylib  # [osx]
         - test -f ${PREFIX}/lib/lib{{ name }}-io.so  # [linux]
@@ -67,6 +69,8 @@ outputs:
         - if not exist %PREFIX%\\Library\\bin\\{{ name }}.dll exit 1  # [win]
         - if not exist %PREFIX%\\Library\\lib\\{{ name }}-graphics.lib exit 1  # [win]
         - if not exist %PREFIX%\\Library\\bin\\{{ name }}-graphics.dll exit 1  # [win]
+        - if not exist %PREFIX%\\Library\\lib\\{{ name }}-geospatial.lib exit 1  # [win]
+        - if not exist %PREFIX%\\Library\\bin\\{{ name }}-geospatial.dll exit 1  # [win]
         - if not exist %PREFIX%\\Library\\lib\\{{ name }}-av.lib exit 1  # [win]
         - if not exist %PREFIX%\\Library\\bin\\{{ name }}-av.dll exit 1  # [win]
         - if not exist %PREFIX%\\Library\\lib\\{{ name }}-io.lib exit 1  # [win]
@@ -104,7 +108,15 @@ about:
   license: Apache-2.0
   license_file: LICENSE
   summary: An audio-visual library supports processing audio and video files, a graphics library can load a variety 3D mesh file formats into a generic in-memory representation, and the core library of Gazebo Common contains functionality that spans Base64 encoding/decoding to thread pools.
+  description: |
+    This feedstock builds several conda packages from the gz-common source code, these packages are:
+    * `{{ cxx_name }}`: Package that contains the gz-common C++ libraries.
+    * `{{ name }}`: Meta-package that depends on `{{ cxx_name }}`.
 
+    If you need to depend at build time on the C++ package, please depend on `{{ cxx_name }}` in your recipe.
+
+    On `linux-ppc64le` the `{{ cxx_name }}` does not contain the geospatial component as in that platform the `gdal` dependency is not available.
+    
 extra:
   feedstock-name: {{ repo_name }}
   recipe-maintainers:

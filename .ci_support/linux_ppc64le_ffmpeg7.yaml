@@ -24,8 +24,6 @@ ffmpeg:
 - '7'
 glib:
 - '2'
-libgdal:
-- '3.8'
 libuuid:
 - '2'
 target_platform:
