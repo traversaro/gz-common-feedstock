@@ -13,8 +13,6 @@ if [ ${target_platform} == "linux-ppc64le" ]; then
   # Disable tests
   GZ_TEST_CMD=-DBUILD_TESTING:BOOL=OFF
   NUM_PARALLEL=-j1
-  # Disable geospatial, see https://github.com/conda-forge/gdal-feedstock/issues/918
-  CMAKE_ARGS="${CMAKE_ARGS} -DSKIP_geospatial:BOOL=ON"
 else
   GZ_TEST_CMD=
   NUM_PARALLEL=
