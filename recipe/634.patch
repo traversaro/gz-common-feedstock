@@ -9,10 +9,10 @@ Signed-off-by: Ian Chen <ichen@openrobotics.org>
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/graphics/src/AssimpLoader.cc b/graphics/src/AssimpLoader.cc
-index bcbd7096..4cf8cf33 100644
+index f0bcf194..5f8220c8 100644
 --- a/graphics/src/AssimpLoader.cc
 +++ b/graphics/src/AssimpLoader.cc
-@@ -650,14 +650,14 @@ SubMesh AssimpLoader::Implementation::CreateSubMesh(
+@@ -650,15 +650,14 @@ SubMesh AssimpLoader::Implementation::CreateSubMesh(
      subMesh.AddVertex(vertex);
      subMesh.AddNormal(normal);
      // Iterate over sets of texture coordinates
@@ -25,7 +25,8 @@ index bcbd7096..4cf8cf33 100644
        math::Vector3d texcoords;
 -      texcoords.X(_assimpMesh->mTextureCoords[uvIdx][vertexIdx].x);
 -      texcoords.Y(_assimpMesh->mTextureCoords[uvIdx][vertexIdx].y);
--      subMesh.AddTexCoordBySet(texcoords.X(), texcoords.Y(), uvIdx);
+-      // TODO(luca) why do we need 1.0 - Y?
+-      subMesh.AddTexCoordBySet(texcoords.X(), 1.0 - texcoords.Y(), uvIdx);
 -      ++uvIdx;
 +      texcoords.X(_assimpMesh->mTextureCoords[i][vertexIdx].x);
 +      texcoords.Y(_assimpMesh->mTextureCoords[i][vertexIdx].y);
