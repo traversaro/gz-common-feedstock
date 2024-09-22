@@ -30,7 +30,7 @@ index f0bcf194..5f8220c8 100644
 -      ++uvIdx;
 +      texcoords.X(_assimpMesh->mTextureCoords[i][vertexIdx].x);
 +      texcoords.Y(_assimpMesh->mTextureCoords[i][vertexIdx].y);
-+      subMesh.AddTexCoordBySet(texcoords.X(), texcoords.Y(), i);
++      subMesh.AddTexCoordBySet(texcoords.X(), 1.0 - texcoords.Y(), i);
      }
    }
    for (unsigned faceIdx = 0; faceIdx < _assimpMesh->mNumFaces; ++faceIdx)
