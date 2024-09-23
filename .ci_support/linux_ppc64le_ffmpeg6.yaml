@@ -1,5 +1,5 @@
 assimp:
-- 5.4.2
+- 5.4.3
 c_compiler:
 - gcc
 c_compiler_version:
@@ -24,6 +24,8 @@ ffmpeg:
 - '6'
 glib:
 - '2'
+libgdal:
+- '3.9'
 libuuid:
 - '2'
 target_platform:

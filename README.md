@@ -15,8 +15,6 @@ This feedstock builds several conda packages from the gz-common source code, the
 
 If you need to depend at build time on the C++ package, please depend on `libgz-common5` in your recipe.
 
-On `linux-ppc64le` the `libgz-common5` does not contain the geospatial component as in that platform the `gdal` dependency is not available.
-
 
 Current build status
 ====================
@@ -251,7 +249,4 @@ Feedstock Maintainers
 
 * [@Tobias-Fischer](https://github.com/Tobias-Fischer/)
 * [@traversaro](https://github.com/traversaro/)
-
-
-<!-- dummy commit to enable rerendering -->
 
