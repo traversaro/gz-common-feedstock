@@ -10,10 +10,10 @@ Package license: Apache-2.0
 Summary: An audio-visual library supports processing audio and video files, a graphics library can load a variety 3D mesh file formats into a generic in-memory representation, and the core library of Gazebo Common contains functionality that spans Base64 encoding/decoding to thread pools.
 
 This feedstock builds several conda packages from the gz-common source code, these packages are:
-* `libgz-common5`: Package that contains the gz-common C++ libraries.
-* `gz-common5`: Meta-package that depends on `libgz-common5`.
+* `libgz-common6`: Package that contains the gz-common C++ libraries.
+* `gz-common6`: Meta-package that depends on `libgz-common6`.
 
-If you need to depend at build time on the C++ package, please depend on `libgz-common5` in your recipe.
+If you need to depend at build time on the C++ package, please depend on `libgz-common6` in your recipe.
 
 
 Current build status
@@ -130,8 +130,8 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-gz--common5-green.svg)](https://anaconda.org/conda-forge/gz-common5) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-common5.svg)](https://anaconda.org/conda-forge/gz-common5) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-common5.svg)](https://anaconda.org/conda-forge/gz-common5) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-common5.svg)](https://anaconda.org/conda-forge/gz-common5) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-libgz--common5-green.svg)](https://anaconda.org/conda-forge/libgz-common5) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libgz-common5.svg)](https://anaconda.org/conda-forge/libgz-common5) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libgz-common5.svg)](https://anaconda.org/conda-forge/libgz-common5) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libgz-common5.svg)](https://anaconda.org/conda-forge/libgz-common5) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-gz--common6-green.svg)](https://anaconda.org/conda-forge/gz-common6) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-common6.svg)](https://anaconda.org/conda-forge/gz-common6) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-common6.svg)](https://anaconda.org/conda-forge/gz-common6) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-common6.svg)](https://anaconda.org/conda-forge/gz-common6) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libgz--common6-green.svg)](https://anaconda.org/conda-forge/libgz-common6) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libgz-common6.svg)](https://anaconda.org/conda-forge/libgz-common6) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libgz-common6.svg)](https://anaconda.org/conda-forge/libgz-common6) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libgz-common6.svg)](https://anaconda.org/conda-forge/libgz-common6) |
 
 Installing gz-common
 ====================
@@ -143,41 +143,41 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `gz-common5, libgz-common5` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `gz-common6, libgz-common6` can be installed with `conda`:
 
 ```
-conda install gz-common5 libgz-common5
-```
-
-or with `mamba`:
-
-```
-mamba install gz-common5 libgz-common5
-```
-
-It is possible to list all of the versions of `gz-common5` available on your platform with `conda`:
-
-```
-conda search gz-common5 --channel conda-forge
+conda install gz-common6 libgz-common6
 ```
 
 or with `mamba`:
 
 ```
-mamba search gz-common5 --channel conda-forge
+mamba install gz-common6 libgz-common6
+```
+
+It is possible to list all of the versions of `gz-common6` available on your platform with `conda`:
+
+```
+conda search gz-common6 --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search gz-common6 --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search gz-common5 --channel conda-forge
+mamba repoquery search gz-common6 --channel conda-forge
 
-# List packages depending on `gz-common5`:
-mamba repoquery whoneeds gz-common5 --channel conda-forge
+# List packages depending on `gz-common6`:
+mamba repoquery whoneeds gz-common6 --channel conda-forge
 
-# List dependencies of `gz-common5`:
-mamba repoquery depends gz-common5 --channel conda-forge
+# List dependencies of `gz-common6`:
+mamba repoquery depends gz-common6 --channel conda-forge
 ```
 
 
