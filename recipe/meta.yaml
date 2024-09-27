@@ -36,8 +36,8 @@ outputs:
         - cmake
         - pkg-config
       host:
-        - libgz-math7
-        - libgz-cmake3
+        - libgz-math8
+        - libgz-cmake4
         - libgz-utils2
         - dlfcn-win32  # [win]
         - libuuid      # [linux]
