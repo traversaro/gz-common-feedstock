@@ -12,10 +12,10 @@ cxx_compiler:
 - vs2019
 ffmpeg:
 - '7'
-glib:
-- '2'
 libgdal:
 - '3.9'
+spdlog:
+- '1.13'
 target_platform:
 - win-64
 tinyxml2:
