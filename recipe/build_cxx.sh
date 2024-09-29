@@ -31,7 +31,8 @@ cmake --build . --config Release ${NUM_PARALLEL}
 cmake --build . --config Release --target install ${NUM_PARALLEL}
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
-  # PERFORMANCE_plugin_specialization  is a performance test, let's disable it as we can't do 
-  # any expectation of the speed of the CI machines
-  ctest --output-on-failure -C Release -E PERFORMANCE_plugin_specialization 
+  # PERFORMANCE_* are performance tests, let's disable them as we can't assume 
+  # anything related to the speed of the CI machines
+  # SignalHandler disabled due to https://github.com/gazebosim/gz-common/issues/644#issuecomment-2381358169
+  ctest --output-on-failure -C Release -E "PERFORMANCE_|SignalHandler"
 fi
