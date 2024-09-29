@@ -15,7 +15,7 @@ ffmpeg:
 libgdal:
 - '3.9'
 spdlog:
-- '1.13'
+- '1.14'
 target_platform:
 - win-64
 tinyxml2:
