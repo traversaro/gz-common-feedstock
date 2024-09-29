@@ -42,9 +42,7 @@ outputs:
         - dlfcn-win32  # [win]
         - libuuid      # [linux]
         - freeimage
-        - gts
         - tinyxml2
-        - glib
         - ffmpeg
         - libgdal
         - assimp
