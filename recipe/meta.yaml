@@ -38,7 +38,7 @@ outputs:
       host:
         - libgz-math8
         - libgz-cmake4
-        - libgz-utils2
+        - libgz-utils3
         - dlfcn-win32  # [win]
         - libuuid      # [linux]
         - freeimage
