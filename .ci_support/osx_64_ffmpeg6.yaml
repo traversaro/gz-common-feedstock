@@ -22,12 +22,12 @@ cxx_compiler_version:
 - '17'
 ffmpeg:
 - '6'
-glib:
-- '2'
 libgdal:
 - '3.9'
 macos_machine:
 - x86_64-apple-darwin13.4.0
+spdlog:
+- '1.13'
 target_platform:
 - osx-64
 tinyxml2:
