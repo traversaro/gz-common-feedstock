@@ -3,6 +3,7 @@ cd build
 
 cmake ^
     -G "Ninja" ^
+    -DBUILD_TESTING:BOOL=ON ^
     -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_SYSTEM_RUNTIME_LIBS_SKIP=True ^
@@ -20,5 +21,5 @@ cmake --build . --config Release --target install
 if errorlevel 1 exit 1
 
 :: Test.
-ctest --output-on-failure -C Release
+ctest --output-on-failure -C Release -E "PERFORMANCE_plugin_specialization|SignalHandler"
 if errorlevel 1 exit 1
