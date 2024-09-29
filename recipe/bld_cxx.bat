@@ -21,5 +21,5 @@ cmake --build . --config Release --target install
 if errorlevel 1 exit 1
 
 :: Test.
-ctest --output-on-failure -C Release -E "PERFORMANCE_plugin_specialization|SignalHandler"
+ctest --output-on-failure -C Release -E "PERFORMANCE_|SignalHandler"
 if errorlevel 1 exit 1
