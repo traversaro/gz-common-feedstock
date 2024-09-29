@@ -39,6 +39,8 @@ outputs:
         - libgz-math8
         - libgz-cmake4
         - libgz-utils3
+        # Transitive dependency of libgz-utils3
+        - spdlog
         - dlfcn-win32  # [win]
         - libuuid      # [linux]
         - freeimage
