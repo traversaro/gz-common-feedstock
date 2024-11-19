@@ -11,9 +11,9 @@ channel_targets:
 cxx_compiler:
 - vs2019
 ffmpeg:
-- '6'
+- '7'
 libgdal:
-- '3.9'
+- '3.10'
 spdlog:
 - '1.14'
 target_platform:
