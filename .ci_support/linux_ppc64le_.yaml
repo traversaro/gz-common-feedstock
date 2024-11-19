@@ -9,7 +9,7 @@ c_stdlib:
 c_stdlib_version:
 - '2.17'
 cdt_name:
-- cos7
+- conda
 channel_sources:
 - conda-forge
 channel_targets:
@@ -25,15 +25,13 @@ ffmpeg:
 glib:
 - '2'
 libgdal:
-- '3.9'
+- '3.10'
 libuuid:
 - '2'
 target_platform:
-- linux-64
+- linux-ppc64le
 tinyxml2:
 - '10'
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - c_stdlib_version
-  - cdt_name
