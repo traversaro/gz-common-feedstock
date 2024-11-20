@@ -16,9 +16,10 @@ source:
     patches:
       - librt_linkage.patch  # [linux]
       - macro_path_binary_relocation.patch
+      - 649.patch
 
 build:
-  number: 2
+  number: 3
 
 outputs:
   - name: {{ cxx_name }}
