@@ -1,0 +1,26 @@
+From 2ae90c139b29e58bb2b4009a78fbdf7da15f2844 Mon Sep 17 00:00:00 2001
+From: Michael Carroll <mjcarroll@intrinsic.ai>
+Date: Fri, 18 Oct 2024 13:43:08 +0000
+Subject: [PATCH] Include math::Angle since it is used here
+
+Signed-off-by: Michael Carroll <mjcarroll@intrinsic.ai>
+---
+ graphics/src/SVGLoader.cc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/graphics/src/SVGLoader.cc b/graphics/src/SVGLoader.cc
+index caa84674..1913af51 100644
+--- a/graphics/src/SVGLoader.cc
++++ b/graphics/src/SVGLoader.cc
+@@ -23,9 +23,10 @@
+ 
+ #include "tinyxml2.h"
+ 
++#include "gz/math/Angle.hh"
++
+ #include "gz/common/Console.hh"
+ #include "gz/common/Util.hh"
+-
+ #include "gz/common/SVGLoader.hh"
+ 
+ using namespace gz;
