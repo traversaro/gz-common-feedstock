@@ -1,6 +1,6 @@
 {% set repo_name = "gz-common" %}
 {% set component_name = repo_name.split('-')[1] %}
-{% set version = "5.6.0" %}
+{% set version = "5.7.1" %}
 {% set major_version = version.split('.')[0] %}
 {% set name = repo_name + major_version %}
 {% set component_version = component_name + major_version %}
@@ -17,10 +17,10 @@ source:
       - librt_linkage.patch  # [linux]
       - macro_path_binary_relocation.patch
       - apple_disable_profiler_error_test.patch
-      - 641.patch
+      - 664.patch
 
 build:
-  number: 9
+  number: 0
 
 outputs:
   - name: {{ cxx_name }}
