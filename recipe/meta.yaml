@@ -17,7 +17,6 @@ source:
       - librt_linkage.patch  # [linux]
       - macro_path_binary_relocation.patch
       - apple_disable_profiler_error_test.patch
-      - 664.patch
 
 build:
   number: 0
