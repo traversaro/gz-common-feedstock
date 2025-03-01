@@ -1,0 +1,22 @@
+From fc6ae16997864622db2aad2587c6ba4532080df4 Mon Sep 17 00:00:00 2001
+From: Silvio Traversaro <silvio@traversaro.it>
+Date: Fri, 28 Feb 2025 11:33:57 +0100
+Subject: [PATCH] Add missing include chrono in Event.hh header
+
+Signed-off-by: Silvio <silvio.traversaro@iit.it>
+---
+ events/include/gz/common/Event.hh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/events/include/gz/common/Event.hh b/events/include/gz/common/Event.hh
+index a86c3ac07..936417d74 100644
+--- a/events/include/gz/common/Event.hh
++++ b/events/include/gz/common/Event.hh
+@@ -18,6 +18,7 @@
+ #define GZ_COMMON_EVENT_HH_
+ 
+ #include <atomic>
++#include <chrono>
+ #include <functional>
+ #include <list>
+ #include <map>
