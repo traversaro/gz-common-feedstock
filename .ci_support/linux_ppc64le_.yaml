@@ -23,7 +23,7 @@ docker_image:
 ffmpeg:
 - '7'
 libgdal:
-- '3.10'
+- '3.11'
 libuuid:
 - '2'
 spdlog:

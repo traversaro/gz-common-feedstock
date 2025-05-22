@@ -13,7 +13,7 @@ cxx_compiler:
 ffmpeg:
 - '7'
 libgdal:
-- '3.10'
+- '3.11'
 spdlog:
 - '1.15'
 target_platform:
