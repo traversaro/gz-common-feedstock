@@ -1,7 +1,7 @@
 assimp:
 - 5.4.3
 c_compiler:
-- vs2019
+- vs2022
 c_stdlib:
 - vs
 channel_sources:
@@ -9,9 +9,9 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2019
+- vs2022
 ffmpeg:
-- '7'
+- '8'
 libgdal:
 - '3.11'
 spdlog:
