@@ -1,0 +1,64 @@
+From 66ea0e64d1551a06f75e702945775204b74302be Mon Sep 17 00:00:00 2001
+From: Guilhem Saurel <guilhem.saurel@laas.fr>
+Date: Mon, 20 Jan 2025 16:45:38 +0100
+Subject: [PATCH 1/2] add missing include
+
+to fix:
+```cpp
+/build/source/test/performance/logging.cc: In function 'void {anonymous}::PrintStats(const std::string&, const std::map<long unsigned int, std::vector<long unsigned int> >&, uint64_t)':
+/build/source/test/performance/logging.cc:79:16: error: 'max_element' is not a member of 'std'; did you mean 'tuple_element'?
+   79 |         (*std::max_element(t_result.second.begin(), t_result.second.end()));
+      |                ^~~~~~~~~~~
+```
+
+Signed-off-by: Guilhem Saurel <guilhem.saurel@laas.fr>
+---
+ test/performance/logging.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/test/performance/logging.cc b/test/performance/logging.cc
+index 2403d0b6e..79191b055 100644
+--- a/test/performance/logging.cc
++++ b/test/performance/logging.cc
+@@ -16,6 +16,7 @@
+ */
+ #include <gtest/gtest.h>
+ 
++#include <algorithm>
+ #include <atomic>
+ #include <map>
+ #include <thread>
+
+From fcabe7061ae9153e44a1176178cf6d861708bfe8 Mon Sep 17 00:00:00 2001
+From: Guilhem Saurel <guilhem.saurel@laas.fr>
+Date: Mon, 20 Jan 2025 16:40:49 +0100
+Subject: [PATCH 2/2] add missing include
+
+to fix:
+```cpp
+In file included from /build/source/testing/include/gz/common/testing/AutoLogFixture.hh:58,
+                 from /build/source/src/MaterialDensity_TEST.cc:20:
+/build/source/testing/include/gz/common/testing/detail/AutoLogFixture.hh: In member function 'virtual void gz::common::testing::AutoLogFixture::SetUp()':
+/build/source/testing/include/gz/common/testing/detail/AutoLogFixture.hh:79:8: error: 'replace' is not a member of 'std'
+   79 |   std::replace(this->dataPtr->logFilename.begin(),
+      |        ^~~~~~~
+```
+
+Signed-off-by: Guilhem Saurel <guilhem.saurel@laas.fr>
+---
+ testing/include/gz/common/testing/detail/AutoLogFixture.hh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/testing/include/gz/common/testing/detail/AutoLogFixture.hh b/testing/include/gz/common/testing/detail/AutoLogFixture.hh
+index 658d3ba83..cb94de259 100644
+--- a/testing/include/gz/common/testing/detail/AutoLogFixture.hh
++++ b/testing/include/gz/common/testing/detail/AutoLogFixture.hh
+@@ -17,6 +17,7 @@
+ #ifndef GZ_COMMON_TESTING_DETAIL_AUTOLOGFIXTURE_HH_
+ #define GZ_COMMON_TESTING_DETAIL_AUTOLOGFIXTURE_HH_
+ 
++#include <algorithm>
+ #include <memory>
+ #include <string>
+
+ 
