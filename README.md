@@ -15,7 +15,6 @@ This feedstock builds several conda packages from the gz-common source code, the
 
 If you need to depend at build time on the C++ package, please depend on `libgz-common5` in your recipe.
 
-
 Current build status
 ====================
 
@@ -88,7 +87,9 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-gz--common-green.svg)](https://anaconda.org/conda-forge/gz-common) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-common.svg)](https://anaconda.org/conda-forge/gz-common) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-common.svg)](https://anaconda.org/conda-forge/gz-common) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-common.svg)](https://anaconda.org/conda-forge/gz-common) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-gz--common5-green.svg)](https://anaconda.org/conda-forge/gz-common5) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-common5.svg)](https://anaconda.org/conda-forge/gz-common5) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-common5.svg)](https://anaconda.org/conda-forge/gz-common5) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-common5.svg)](https://anaconda.org/conda-forge/gz-common5) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libgz--common-green.svg)](https://anaconda.org/conda-forge/libgz-common) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libgz-common.svg)](https://anaconda.org/conda-forge/libgz-common) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libgz-common.svg)](https://anaconda.org/conda-forge/libgz-common) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libgz-common.svg)](https://anaconda.org/conda-forge/libgz-common) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libgz--common5-green.svg)](https://anaconda.org/conda-forge/libgz-common5) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libgz-common5.svg)](https://anaconda.org/conda-forge/libgz-common5) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libgz-common5.svg)](https://anaconda.org/conda-forge/libgz-common5) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libgz-common5.svg)](https://anaconda.org/conda-forge/libgz-common5) |
 
 Installing gz-common
@@ -101,41 +102,41 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `gz-common5, libgz-common5` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `gz-common, gz-common5, libgz-common, libgz-common5` can be installed with `conda`:
 
 ```
-conda install gz-common5 libgz-common5
-```
-
-or with `mamba`:
-
-```
-mamba install gz-common5 libgz-common5
-```
-
-It is possible to list all of the versions of `gz-common5` available on your platform with `conda`:
-
-```
-conda search gz-common5 --channel conda-forge
+conda install gz-common gz-common5 libgz-common libgz-common5
 ```
 
 or with `mamba`:
 
 ```
-mamba search gz-common5 --channel conda-forge
+mamba install gz-common gz-common5 libgz-common libgz-common5
+```
+
+It is possible to list all of the versions of `gz-common` available on your platform with `conda`:
+
+```
+conda search gz-common --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search gz-common --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search gz-common5 --channel conda-forge
+mamba repoquery search gz-common --channel conda-forge
 
-# List packages depending on `gz-common5`:
-mamba repoquery whoneeds gz-common5 --channel conda-forge
+# List packages depending on `gz-common`:
+mamba repoquery whoneeds gz-common --channel conda-forge
 
-# List dependencies of `gz-common5`:
-mamba repoquery depends gz-common5 --channel conda-forge
+# List dependencies of `gz-common`:
+mamba repoquery depends gz-common --channel conda-forge
 ```
 
 
@@ -160,12 +161,12 @@ it is possible to build and upload installable packages to the
 [conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
-To manage the continuous integration and simplify feedstock maintenance
+To manage the continuous integration and simplify feedstock maintenance,
 [conda-smithy](https://github.com/conda-forge/conda-smithy) has been developed.
 Using the ``conda-forge.yml`` within this repository, it is possible to re-render all of
 this feedstock's supporting files (e.g. the CI configuration files) with ``conda smithy rerender``.
 
-For more information please check the [conda-forge documentation](https://conda-forge.org/docs/).
+For more information, please check the [conda-forge documentation](https://conda-forge.org/docs/).
 
 Terminology
 ===========
@@ -192,7 +193,7 @@ merged, the recipe will be re-built and uploaded automatically to the
 everybody to install and use from the `conda-forge` channel.
 Note that all branches in the conda-forge/gz-common-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
-on branches in forks and branches in the main repository should only be used to
+on branches in forks, and branches in the main repository should only be used to
 build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:
@@ -206,5 +207,4 @@ Feedstock Maintainers
 =====================
 
 * [@Tobias-Fischer](https://github.com/Tobias-Fischer/)
-* [@traversaro](https://github.com/traversaro/)
 
