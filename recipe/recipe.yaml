@@ -1,0 +1,185 @@
+schema_version: 1
+
+context:
+  repo_name: gz-common
+  component_name: common
+  version: 5.7.1
+  major_version: "5"
+  name: ${{ repo_name + major_version }}
+  component_version: ${{ component_name + major_version }}
+  cxx_name: ${{ "lib" + name }}
+
+recipe:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  - url: https://github.com/gazebosim/${{ repo_name }}/archive/${{ repo_name }}${{ major_version }}_${{ version }}.tar.gz
+    sha256: 85e7e334d2ce76ea25a6f912f64c0e462ee4fa0e5661588024e8d34a1187070c
+    patches:
+      - if: linux
+        then:
+          - librt_linkage.patch
+      - macro_path_binary_relocation.patch
+      - apple_disable_profiler_error_test.patch
+      - 660.patch
+
+  # Versionless dummy packages, see https://github.com/conda-forge/gz-sim-feedstock/issues/102
+  - package:
+      name: libgz-${{ component_name }}
+    requirements:
+      run:
+        - ${{ pin_subpackage(cxx_name, exact=true) }}
+      run_exports:
+        - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
+        - ${{ pin_subpackage('libgz-common', upper_bound='x') }}
+    tests:
+      - script:
+          - cmake-package-check gz-${{ component_name }}${{ major_version }}
+        requirements:
+          run:
+            - cmake-package-check
+            - ${{ compiler('c') }}
+            - ${{ compiler('cxx') }}
+
+  - package:
+      name: gz-${{ component_name }}
+    requirements:
+      run:
+        - ${{ pin_subpackage(name, exact=true) }}
+      run_exports:
+        - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
+        - ${{ pin_subpackage('libgz-common', upper_bound='x') }}
+    tests:
+      - script:
+          - cmake-package-check gz-${{ component_name }}${{ major_version }}
+        requirements:
+          run:
+            - cmake-package-check
+            - ${{ compiler('c') }}
+            - ${{ compiler('cxx') }}
+
+build:
+  number: 4
+
+outputs:
+  - package:
+      name: ${{ cxx_name }}
+    build:
+      script:
+        - if: unix
+          then: build_cxx.sh
+        - if: win
+          then: bld_cxx.bat
+    requirements:
+      build:
+        - ${{ compiler('cxx') }}
+        - ${{ compiler('c') }}
+        - ${{ stdlib("c") }}
+        - ninja
+        - cmake
+        - pkg-config
+      host:
+        - libgz-math7
+        - libgz-cmake3
+        - libgz-utils2
+        - if: win
+          then:
+            - dlfcn-win32
+        - if: linux
+          then:
+            - libuuid
+        - freeimage
+        - gts
+        - tinyxml2
+        - glib
+        - ffmpeg
+        - libgdal
+        - assimp
+      run_exports:
+        - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
+    tests:
+      - script:
+          - if: not win
+            then:
+              - test -f ${PREFIX}/include/gz/${{ component_version }}/gz/${{ component_name }}.hh
+              - test -f ${PREFIX}/lib/cmake/${{ name }}/${{ name }}-config.cmake
+          - if: linux
+            then:
+              - test -f ${PREFIX}/lib/lib${{ name }}.so
+              - test -f ${PREFIX}/lib/lib${{ name }}-graphics.so
+              - test -f ${PREFIX}/lib/lib${{ name }}-geospatial${SHLIB_EXT}
+              - test -f ${PREFIX}/lib/lib${{ name }}-av.so
+              - test -f ${PREFIX}/lib/lib${{ name }}-io.so
+          - if: osx
+            then:
+              - test -f ${PREFIX}/lib/lib${{ name }}.dylib
+              - test -f ${PREFIX}/lib/lib${{ name }}-graphics.dylib
+              - test -f ${PREFIX}/lib/lib${{ name }}-geospatial${SHLIB_EXT}
+              - test -f ${PREFIX}/lib/lib${{ name }}-av.dylib
+              - test -f ${PREFIX}/lib/lib${{ name }}-io.dylib
+          - if: win
+            then:
+              - if not exist %PREFIX%\\Library\\include\\gz\\${{ component_version }}\\gz\\${{ component_name }}.hh exit 1
+              - if not exist %PREFIX%\\Library\\lib\\${{ name }}.lib exit 1
+              - if not exist %PREFIX%\\Library\\bin\\${{ name }}.dll exit 1
+              - if not exist %PREFIX%\\Library\\lib\\${{ name }}-graphics.lib exit 1
+              - if not exist %PREFIX%\\Library\\bin\\${{ name }}-graphics.dll exit 1
+              - if not exist %PREFIX%\\Library\\lib\\${{ name }}-geospatial.lib exit 1
+              - if not exist %PREFIX%\\Library\\bin\\${{ name }}-geospatial.dll exit 1
+              - if not exist %PREFIX%\\Library\\lib\\${{ name }}-av.lib exit 1
+              - if not exist %PREFIX%\\Library\\bin\\${{ name }}-av.dll exit 1
+              - if not exist %PREFIX%\\Library\\lib\\${{ name }}-io.lib exit 1
+              - if not exist %PREFIX%\\Library\\bin\\${{ name }}-io.dll exit 1
+              - if not exist %PREFIX%\\Library\\lib\\cmake\\${{ name }}\\${{ name }}-config.cmake exit 1
+
+  - package:
+      name: ${{ name }}
+    requirements:
+      run:
+        - ${{ pin_subpackage(cxx_name, exact=True) }}
+      run_exports:
+        - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
+    tests:
+      - script:
+          - if: not win
+            then:
+              - test -f ${PREFIX}/include/gz/${{ component_version }}/gz/${{ component_name }}.hh
+              - test -f ${PREFIX}/lib/cmake/${{ name }}/${{ name }}-config.cmake
+          - if: linux
+            then:
+              - test -f ${PREFIX}/lib/lib${{ name }}.so
+              - test -f ${PREFIX}/lib/lib${{ name }}-graphics.so
+              - test -f ${PREFIX}/lib/lib${{ name }}-av.so
+          - if: osx
+            then:
+              - test -f ${PREFIX}/lib/lib${{ name }}.dylib
+              - test -f ${PREFIX}/lib/lib${{ name }}-graphics.dylib
+              - test -f ${PREFIX}/lib/lib${{ name }}-av.dylib
+          - if: win
+            then:
+              - if not exist %PREFIX%\\Library\\include\\gz\\${{ component_version }}\\gz\\${{ component_name }}.hh exit 1
+              - if not exist %PREFIX%\\Library\\lib\\${{ name }}.lib exit 1
+              - if not exist %PREFIX%\\Library\\bin\\${{ name }}.dll exit 1
+              - if not exist %PREFIX%\\Library\\lib\\${{ name }}-graphics.lib exit 1
+              - if not exist %PREFIX%\\Library\\bin\\${{ name }}-graphics.dll exit 1
+              - if not exist %PREFIX%\\Library\\lib\\${{ name }}-av.lib exit 1
+              - if not exist %PREFIX%\\Library\\bin\\${{ name }}-av.dll exit 1
+              - if not exist %PREFIX%\\Library\\lib\\cmake\\${{ name }}\\${{ name }}-config.cmake exit 1
+
+about:
+  homepage: https://github.com/gazebosim/${{ repo_name }}
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: An audio-visual library supports processing audio and video files, a graphics library can load a variety 3D mesh file formats into a generic in-memory representation, and the core library of Gazebo Common contains functionality that spans Base64 encoding/decoding to thread pools.
+  description: |
+    This feedstock builds several conda packages from the gz-common source code, these packages are:
+    * `${{ cxx_name }}`: Package that contains the gz-common C++ libraries.
+    * `${{ name }}`: Meta-package that depends on `${{ cxx_name }}`.
+
+    If you need to depend at build time on the C++ package, please depend on `${{ cxx_name }}` in your recipe.
+
+extra:
+  feedstock-name: ${{ repo_name }}
+  recipe-maintainers:
+    - Tobias-Fischer
