@@ -3,9 +3,9 @@ schema_version: 1
 context:
   repo_name: gz-common
   component_name: common
-  version: 6.1.0
-  major_version: "6"
-  name: ${{ repo_name + major_version }}
+  version: 7.0.0
+  major_version: "7"
+  name: ${{ repo_name }}
   component_version: ${{ component_name + major_version }}
   cxx_name: ${{ "lib" + name }}
 
@@ -15,7 +15,7 @@ recipe:
 
 source:
   - url: https://github.com/gazebosim/${{ repo_name }}/archive/${{ repo_name }}${{ major_version }}_${{ version }}.tar.gz
-    sha256: 74596a71d3b230beb372d55592df8327b5734119fddf411ba9da7ab495741387
+    sha256: 7232b8b141b06cbd90112e8adc0b19ec5348b30c7c2c1d13629c207c2ba0eafd
     patches:
       - if: linux
         then:
@@ -23,7 +23,7 @@ source:
       - macro_path_binary_relocation.patch
 
 build:
-  number: 2
+  number: 0
 
 outputs:
   - package:
@@ -43,9 +43,9 @@ outputs:
         - cmake
         - pkg-config
       host:
-        - libgz-math8
-        - libgz-cmake4
-        - libgz-utils3
+        - libgz-math
+        - libgz-cmake
+        - libgz-utils
         - spdlog
         - if: win
           then:
@@ -121,42 +121,6 @@ outputs:
               - if not exist %PREFIX%\\Library\\lib\\${{ name }}-av.lib exit 1
               - if not exist %PREFIX%\\Library\\bin\\${{ name }}-av.dll exit 1
               - if not exist %PREFIX%\\Library\\lib\\cmake\\${{ name }}\\${{ name }}-config.cmake exit 1
-
-  # Versionless dummy packages, see https://github.com/conda-forge/gz-sim-feedstock/issues/102
-  - package:
-      name: libgz-${{ component_name }}
-    requirements:
-      run:
-        - ${{ pin_subpackage(cxx_name, exact=true) }}
-      run_exports:
-        - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
-        - ${{ pin_subpackage('libgz-common', upper_bound='x') }}
-    tests:
-      - script:
-          - cmake-package-check gz-${{ component_name }}${{ major_version }}
-        requirements:
-          run:
-            - cmake-package-check
-            - ${{ compiler('c') }}
-            - ${{ compiler('cxx') }}
-
-  - package:
-      name: gz-${{ component_name }}
-    requirements:
-      run:
-        - ${{ pin_subpackage(name, exact=true) }}
-      run_exports:
-        - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
-        - ${{ pin_subpackage('libgz-common', upper_bound='x') }}
-    tests:
-      - script:
-          - cmake-package-check gz-${{ component_name }}${{ major_version }}
-        requirements:
-          run:
-            - cmake-package-check
-            - ${{ compiler('c') }}
-            - ${{ compiler('cxx') }}
-
 
 about:
   homepage: https://github.com/gazebosim/${{ repo_name }}
