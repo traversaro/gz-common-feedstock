@@ -24,6 +24,12 @@ ffmpeg:
 - '8'
 libgdal:
 - '3.11'
+libgz_cmake:
+- '5'
+libgz_math:
+- '9'
+libgz_utils:
+- '4'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 spdlog:

@@ -22,6 +22,12 @@ ffmpeg:
 - '8'
 libgdal:
 - '3.11'
+libgz_cmake:
+- '5'
+libgz_math:
+- '9'
+libgz_utils:
+- '4'
 libuuid:
 - '2'
 spdlog:

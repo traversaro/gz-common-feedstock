@@ -10,10 +10,10 @@ Package license: Apache-2.0
 Summary: An audio-visual library supports processing audio and video files, a graphics library can load a variety 3D mesh file formats into a generic in-memory representation, and the core library of Gazebo Common contains functionality that spans Base64 encoding/decoding to thread pools.
 
 This feedstock builds several conda packages from the gz-common source code, these packages are:
-* `libgz-common6`: Package that contains the gz-common C++ libraries.
-* `gz-common6`: Meta-package that depends on `libgz-common6`.
+* `libgz-common`: Package that contains the gz-common C++ libraries.
+* `gz-common`: Meta-package that depends on `libgz-common`.
 
-If you need to depend at build time on the C++ package, please depend on `libgz-common6` in your recipe.
+If you need to depend at build time on the C++ package, please depend on `libgz-common` in your recipe.
 
 Current build status
 ====================
@@ -88,9 +88,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-gz--common-green.svg)](https://anaconda.org/conda-forge/gz-common) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-common.svg)](https://anaconda.org/conda-forge/gz-common) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-common.svg)](https://anaconda.org/conda-forge/gz-common) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-common.svg)](https://anaconda.org/conda-forge/gz-common) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-gz--common6-green.svg)](https://anaconda.org/conda-forge/gz-common6) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-common6.svg)](https://anaconda.org/conda-forge/gz-common6) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-common6.svg)](https://anaconda.org/conda-forge/gz-common6) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-common6.svg)](https://anaconda.org/conda-forge/gz-common6) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libgz--common-green.svg)](https://anaconda.org/conda-forge/libgz-common) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libgz-common.svg)](https://anaconda.org/conda-forge/libgz-common) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libgz-common.svg)](https://anaconda.org/conda-forge/libgz-common) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libgz-common.svg)](https://anaconda.org/conda-forge/libgz-common) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-libgz--common6-green.svg)](https://anaconda.org/conda-forge/libgz-common6) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libgz-common6.svg)](https://anaconda.org/conda-forge/libgz-common6) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libgz-common6.svg)](https://anaconda.org/conda-forge/libgz-common6) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libgz-common6.svg)](https://anaconda.org/conda-forge/libgz-common6) |
 
 Installing gz-common
 ====================
@@ -102,16 +100,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `gz-common, gz-common6, libgz-common, libgz-common6` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `gz-common, libgz-common` can be installed with `conda`:
 
 ```
-conda install gz-common gz-common6 libgz-common libgz-common6
+conda install gz-common libgz-common
 ```
 
 or with `mamba`:
 
 ```
-mamba install gz-common gz-common6 libgz-common libgz-common6
+mamba install gz-common libgz-common
 ```
 
 It is possible to list all of the versions of `gz-common` available on your platform with `conda`:
