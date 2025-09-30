@@ -43,9 +43,9 @@ outputs:
         - cmake
         - pkg-config
       host:
-        - libgz-math8
-        - libgz-cmake4
-        - libgz-utils3
+        - libgz-math
+        - libgz-cmake
+        - libgz-utils
         - spdlog
         - if: win
           then:
