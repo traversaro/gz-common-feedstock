@@ -1,5 +1,5 @@
 assimp:
-- 6.0.3
+- '6'
 c_compiler:
 - vs2022
 c_stdlib:
@@ -13,7 +13,7 @@ cxx_compiler:
 ffmpeg:
 - '8'
 libgdal:
-- '3.12'
+- '3.13'
 spdlog:
 - '1.17'
 target_platform:
