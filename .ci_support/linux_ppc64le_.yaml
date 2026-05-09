@@ -1,5 +1,5 @@
 assimp:
-- 6.0.3
+- '6'
 c_compiler:
 - gcc
 c_compiler_version:
@@ -21,7 +21,7 @@ docker_image:
 ffmpeg:
 - '8'
 libgdal:
-- '3.12'
+- '3.13'
 libgz_cmake:
 - '5'
 libgz_math:
