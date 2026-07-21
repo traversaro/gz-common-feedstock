@@ -3,7 +3,7 @@ schema_version: 1
 context:
   repo_name: gz-common
   component_name: common
-  version: "7.2.0"
+  version: "7.3.0"
   major_version: "7"
   name: ${{ repo_name }}
   component_version: ${{ component_name ~ major_version }}
@@ -15,7 +15,7 @@ recipe:
 
 source:
   - url: https://github.com/gazebosim/${{ repo_name }}/archive/${{ repo_name }}${{ major_version }}_${{ version }}.tar.gz
-    sha256: 8e79c3dda2c4acdb019b7decdf18c4dae8f5378ee936591061771f44d0077d17
+    sha256: ad58aeb70ccac98deac074f6f7cd17ae3d9e3716028fcaecc2fae09d26d5ead9
     patches:
       - if: linux
         then:
