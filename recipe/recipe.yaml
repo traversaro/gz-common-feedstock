@@ -23,7 +23,7 @@ source:
       - macro_path_binary_relocation.patch
 
 build:
-  number: 8
+  number: 9
 
 outputs:
   - package:
@@ -56,8 +56,14 @@ outputs:
         - freeimage
         - tinyxml2
         - ffmpeg
-        - libgdal
+        # Avoid the libgdal metapackage, which pulls every optional plugin,
+        # including TileDB and its unrelated cloud ABI. The netCDF plugin is
+        # needed by gz-common's DEM support and tests.
+        - libgdal-core
+        - libgdal-netcdf
         - assimp
+      run:
+        - libgdal-netcdf
       run_exports:
         - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
     tests:
